@@ -8,3 +8,6 @@ zabbix_webserver: nginx
 
 zabbix_version: "7.4"
 zabbix_repo_url: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/release/debian/pool/main/z/zabbix-release/{{ zabbix_release }}"
+zabbix_db_host: localhost
+zabbix_db_name: zabbix
+zabbix_db_user: zabbix
