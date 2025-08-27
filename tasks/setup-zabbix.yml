@@ -51,4 +51,5 @@
     dest: /etc/default/locale
     content: |
       LANG=en_US.UTF-8
-  notify: Reload locale
+  notify: 
+    - Reload systemd environment
