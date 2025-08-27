@@ -9,6 +9,7 @@
 - name: Install Zabbix packages
   ansible.builtin.apt:
     name:
+      - nginx
       - "zabbix-server-{{ zabbix_database }}"
       - zabbix-frontend-php
       - "zabbix-{{ zabbix_webserver }}-conf"
