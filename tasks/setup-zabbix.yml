@@ -9,6 +9,7 @@
 - name: Install Zabbix packages
   ansible.builtin.apt:
     name:
+      - locales
       - nginx
       - "zabbix-server-{{ zabbix_database }}"
       - zabbix-frontend-php
@@ -34,10 +35,20 @@
     group: root
     mode: '0644'
 
-- name: Generate en_US locale
-  ansible.builtin.locale_gen:
-    name: en_US.UTF-8
+- name: Enable en_US.UTF-8 in /etc/locale.gen
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: '^#? *en_US.UTF-8 UTF-8'
+    line: 'en_US.UTF-8 UTF-8'
     state: present
 
-- name: Set system-wide locale
-  ansible.builtin.shell: update-locale LANG=en_US.UTF-8
+- name: Generate locales
+  ansible.builtin.command: locale-gen
+  changed_when: false  # locale-gen always outputs text
+
+- name: Set system-wide default locale
+  ansible.builtin.copy:
+    dest: /etc/default/locale
+    content: |
+      LANG=en_US.UTF-8
+  notify: Reload locale
