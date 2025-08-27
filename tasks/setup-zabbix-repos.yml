@@ -1,4 +1,12 @@
 ---
+- name: Get the local system OS version details
+  shell: "lsb_release -rs"
+  register: release_major
+
+- name: Set Zabbix release name
+  set_fact:
+    zabbix_release: "zabbix-release_{{ zabbix_version }}+debian{{ release_major.stdout }}_all.deb"
+
 - name: Ensure required packages for repo management are installed
   ansible.builtin.apt:
     name:
