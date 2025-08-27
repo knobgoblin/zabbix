@@ -2,4 +2,6 @@
 - include_tasks: debug.yml
   when: zabbix_debug
 
-- include_tasks: setup-zabbix-repos.yml
+- include_tasks:
+    - setup-zabbix-repos.yml
+    - setup-zabbix.yml
