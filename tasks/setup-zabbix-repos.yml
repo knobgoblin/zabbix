@@ -19,5 +19,5 @@
     deb: "/tmp/{{ zabbix_release }}"
 
 - name: Update apt cache
-    ansible.builtin.apt:
-      update_cache: yes
+  ansible.builtin.apt:
+    update_cache: yes
