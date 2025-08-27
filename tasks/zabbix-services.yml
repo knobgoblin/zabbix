@@ -4,7 +4,7 @@
     name: "{{ item }}"
     enabled: True
   loop:
-    - zabix-server
+    - zabbix-server
     - zabbix-agent
     - nginx
 
