@@ -1,0 +1,14 @@
+---
+- name: Set debug Zabbix variables
+  set_fact:
+    zabbix_conf_directory: "{{ zabbix_debug_config_path }}"
+    zabbix_conf_directory_owner: "{{ zabbix_debug_owner }}"
+    zabbix_conf_directory_group: "{{ zabbix_debug_group }}"
+    zabbix_systemd_service_directory: "{{ zabbix_debug_config_path }}"
+    zabbix_owner: "{{ zabbix_debug_owner }}"
+    zabbix_group: "{{ zabbix_debug_group }}"
+
+- name: Add nobody group 
+  group:
+    name: nobody
+    state: present

@@ -1,0 +1,23 @@
+---
+- name: Ensure required packages for repo management are installed
+  ansible.builtin.apt:
+    name:
+      - curl
+      - apt-transport-https
+      - lsb-release
+    state: present
+    update_cache: yes
+
+- name: Download Zabbix repository package
+  ansible.builtin.get_url:
+    url: "{{ zabbix_repo_url }}"
+    dest: "/tmp/{{ zabbix_release }}"
+    mode: '0644'
+
+- name: Install Zabbix repository package
+  ansible.builtin.apt:
+    deb: "/tmp/{{ zabbix_release }}"
+
+- name: Update apt cache
+    ansible.builtin.apt:
+      update_cache: yes
