@@ -11,3 +11,5 @@ zabbix_repo_url: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/release/de
 zabbix_db_host: localhost
 zabbix_db_name: zabbix
 zabbix_db_user: zabbix
+
+zabbix_web_port: 8000

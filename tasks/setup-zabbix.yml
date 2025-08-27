@@ -16,3 +16,19 @@
       - zabbix-agent
     state: present
     update_cache: yes
+
+- name: Create Zabbix configuration file
+  ansible.builtin.template:
+    src: zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Create nginx configuration for Zabbix
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/zabbix/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
