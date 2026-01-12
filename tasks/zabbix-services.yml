@@ -19,12 +19,12 @@
 
 - name: Enable PHP for PostgreSQL
   service:
-    name: php8.2-fpm
+    name: "php{{ zabbix_php_version }}-fpm"
     enabled: True
   when: zabbix_database == 'pgsql'
 
 - name: Start PHP for PostgreSQL
   service:
-    name: php8.2-fpm
+    name: "php{{ zabbix_php_version }}-fpm"
     state: restarted
   when: zabbix_database == 'pgsql'
