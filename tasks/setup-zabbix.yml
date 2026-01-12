@@ -11,6 +11,7 @@
     name:
       - locales
       - nginx
+      - php-pgsql
       - "zabbix-server-{{ zabbix_database }}"
       - zabbix-frontend-php
       - "zabbix-{{ zabbix_webserver }}-conf"
