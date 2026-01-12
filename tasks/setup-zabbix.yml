@@ -1,7 +1,7 @@
 ---
 - name: Install PHP for PostgreSQL
   ansible.builtin.apt:
-    name: php8.2-pgsql
+    name: php-pgsql
     state: present
     update_cache: yes
   when: zabbix_database == "pgsql"
@@ -11,7 +11,6 @@
     name:
       - locales
       - nginx
-      - php-pgsql
       - "zabbix-server-{{ zabbix_database }}"
       - zabbix-frontend-php
       - "zabbix-{{ zabbix_webserver }}-conf"
